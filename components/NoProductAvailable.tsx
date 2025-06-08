@@ -34,6 +34,8 @@ const NoProductAvailable = ({
         We&apos;re sorry, but there are no products matching on{""}
         <span className="text-base font-semibold text-darkColor">
           {selectedTab}
+              
+
         </span>
         {""}criteria at the moment.
       </motion.p>

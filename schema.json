@@ -792,7 +792,7 @@
                 "optional": true
               }
             },
-            "dereferencesTo": "categories",
+            "dereferencesTo": "category",
             "rest": {
               "type": "object",
               "attributes": {
@@ -2119,7 +2119,7 @@
     }
   },
   {
-    "name": "categories",
+    "name": "category",
     "type": "document",
     "attributes": {
       "_id": {
@@ -2132,7 +2132,7 @@
         "type": "objectAttribute",
         "value": {
           "type": "string",
-          "value": "categories"
+          "value": "category"
         }
       },
       "_createdAt": {

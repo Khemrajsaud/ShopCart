@@ -2,8 +2,8 @@ import { defineField, defineType } from "sanity";
 import { TagIcon } from "@sanity/icons";
 
 export const categoryType = defineType({
-  name: "categories",
-  title: "Categories",
+  name: "category",
+  title: "Category",
   type: "document",
   icon: TagIcon,
   fields: [
@@ -35,6 +35,11 @@ export const categoryType = defineType({
       type: "boolean",
       initialValue: false,
     }),
+
+
+
+
+
     defineField({
       name: "image",
       title: "Category Image",

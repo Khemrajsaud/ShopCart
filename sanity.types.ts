@@ -139,7 +139,7 @@ export type Product = {
     _type: "reference";
     _weak?: boolean;
     _key: string;
-    [internalGroqTypeReferenceTo]?: "categories";
+    [internalGroqTypeReferenceTo]?: "category";
   }>;
   stock?: number;
   brand?: "new" | "hot" | "sale";
@@ -335,9 +335,9 @@ export type Address = {
   createdAt?: string;
 };
 
-export type Categories = {
+export type Category = {
   _id: string;
-  _type: "categories";
+  _type: "category";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -423,5 +423,191 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Order | Product | Brand | Blog | Blogcategory | BlockContent | Author | Address | Categories | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Order | Product | Brand | Blog | Blogcategory | BlockContent | Author | Address | Category | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./sanity/lib/queries/query.ts
+// Variable: BRAND_QUERY
+// Query: *[_type == "brand"] {  _id,  slug,  image,    title,       name} | order(name asc)
+export type BRAND_QUERYResult = Array<{
+  _id: string;
+  slug: Slug | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  title: string | null;
+  name: null;
+}>;
+// Variable: LATEST_BLOG_QUERY
+// Query: *[_type == "blog" && isLatest == true] | order(name asc) {    blogcategories,    title,    description,   body,    mainImage  }
+export type LATEST_BLOG_QUERYResult = Array<{
+  blogcategories: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "blogcategory";
+  }> | null;
+  title: string | null;
+  description: null;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+}>;
+// Variable: DEAL_PRODUCTS
+// Query: *[_type == "product" && brand == "hot"] | order(name asc) {    _id,    name,    images,    category,    price  }
+export type DEAL_PRODUCTSResult = Array<{
+  _id: string;
+  name: string | null;
+  images: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }> | null;
+  category: null;
+  price: number | null;
+}>;
+// Variable: PRODUCT_BY_SLUG_QUERY
+// Query: *[  _type == "product" &&  slug.current == $slug] | order(name asc)[0]
+export type PRODUCT_BY_SLUG_QUERYResult = {
+  _id: string;
+  _type: "product";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  images?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
+  description?: string;
+  price?: number;
+  discount?: number;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  stock?: number;
+  brand?: "hot" | "new" | "sale";
+  variant?: "appliances" | "gadget" | "others" | "refrigerators";
+  isFeatured?: boolean;
+} | null;
+// Variable: BRANDS_QUERY
+// Query: *[    _type == "product" &&    brand->title == $brandName  ]
+export type BRANDS_QUERYResult = Array<{
+  _id: string;
+  _type: "product";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  images?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
+  description?: string;
+  price?: number;
+  discount?: number;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  stock?: number;
+  brand?: "hot" | "new" | "sale";
+  variant?: "appliances" | "gadget" | "others" | "refrigerators";
+  isFeatured?: boolean;
+}>;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    "*[_type == \"brand\"] {\n  _id,\n  slug,\n  image,\n    title,     \n  name\n} | order(name asc)": BRAND_QUERYResult;
+    "\n  *[_type == \"blog\" && isLatest == true] | order(name asc) {\n    blogcategories,\n    title,\n    description,\n   body,\n    mainImage\n  }\n": LATEST_BLOG_QUERYResult;
+    "\n  *[_type == \"product\" && brand == \"hot\"] | order(name asc) {\n    _id,\n    name,\n    images,\n    category,\n    price\n  }\n\n  \n": DEAL_PRODUCTSResult;
+    "*[\n  _type == \"product\" &&\n  slug.current == $slug\n] | order(name asc)[0]": PRODUCT_BY_SLUG_QUERYResult;
+    "\n  *[\n    _type == \"product\" &&\n    brand->title == $brandName\n  ]\n": BRANDS_QUERYResult;
+  }
+}

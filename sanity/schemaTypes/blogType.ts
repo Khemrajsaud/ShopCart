@@ -53,7 +53,7 @@ export const blogType = defineType({
   preview: {
     select: {
       title: "title",
-      author: "author. name",
+      author: "author.name",
       media: "mainImage",
       isLatest: "isLatest",
     },

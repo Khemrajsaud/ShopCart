@@ -1,8 +1,8 @@
 export const headerData = [
-  {title: "Home",href: "/",},
-  { title: "Shop", href: "/Shop" },
-  { title: "Blog", href: "/Blog" },
-  { title: "Contact", href: "/Contact" },
+  { title: "Home", href: "/" },
+  { title: "Shop", href: "/shop" },
+  { title: "Blog", href: "/blog" },
+  { title: "Contact", href: "/contact" },
   { title: "Hot Deal", href: "/deal" },
 ];
 
@@ -26,7 +26,7 @@ export const categoriesData = [
 ];
 
 export const productType = [
-  {title: "Gadget", Value: "gadget"},
+  { title: "Gadget", Value: "gadget" },
   { title: "Appliances", value: "appliances" },
   { title: "Refrigerators", value: "refrigerators" },
   { title: "other", value: "other" },
@@ -39,4 +39,20 @@ export const products = [
   { title: "shoes" },
   { title: "shoes" },
   { title: "shoes" },
+];
+
+export const categories = [
+  { title: "KitchenAppliances" },
+  { title: "Television" },
+  { title: "Refrigerators" },
+  { title: "WashingMachine" },
+  { title: "Tablets" },
+  { title: "GadgetAccessories" },
+  { title: "Appliances" },
+  { title: "AirConditioners" },
+  { title: "Airbuds" },
+  { title: "Cameras" },
+  { title: "Smartphones" },
+  { title: "Mobiles" },
+  { title: "SmartWatches" },
 ];

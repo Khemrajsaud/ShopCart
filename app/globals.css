@@ -8,12 +8,18 @@
   --color-shop_ight_pink: #fcf0e4;
   --color-shop_dark_green: #063c28;
   --color-shop_btn_dark_green: #f6f6f6;
-  --color-shop_light_green: #3b9c3c;
+ 
   --color-shop_orange:#fb6c08;
   --color-lightColor: #52525b;
   --color-lightOrange: #fca99b;
   --color-shop_light_green: #3b9c3c;
+   --color-shop_lighter_green: #93d991;
   --color-darkColor: #1a1a1a;
+  --color-dark_blue: #6c7fd8;
+  --color-shop_lighter_bg: #f1f3f8;
+  --color-shop_light_text: #686e7d;
+    --color-shop_lighter_text: #ababab;
+    --color-deal_bg: #f1f3f8;
 }
 
 @theme inline {
@@ -131,8 +137,8 @@
     @apply bg-background text-foreground;
   }
   .hoverEffect {
-    @apply transition-all duration-300 ease-in-out
-  }
+  @apply transition-all duration-300 ease-in-out;
+}
   button {
     @apply hover:cursor-pointer;
   }
@@ -140,4 +146,8 @@
 
 body{
   font-family: var(--font-poppins);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display:none;
 }
