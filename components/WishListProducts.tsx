@@ -47,7 +47,7 @@ const WishListProducts = () => {
                     Status
                   </th>
                         <th className="p-2 text-center md:text-left">Price</th>
-                  <th className="p-2 text-center md:text-left">Action</th>{" "}
+                  <th className="p-2 text-center md:text-left">Action</th>
                 </tr>
               </thead>
 
