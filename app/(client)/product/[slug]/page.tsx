@@ -1,5 +1,3 @@
-
-
 import { getProductSlug } from "@/sanity/lib/queries";
 import Container from "@/components/Container";
 import React from "react";
@@ -18,13 +16,9 @@ import { notFound } from "next/navigation";
 const SingleProductPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const product = await getProductSlug(slug);
-  if(!product){
+  if (!product) {
     return notFound();
-  
   }
-
-
-  const isStock = product?.stock > 0;
 
   return (
     <Container className="flex flex-col md:flex-row gap-10 py-10">
