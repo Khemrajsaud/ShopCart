@@ -44,7 +44,6 @@ const ShopByBrands = async () => {
   const response = await getAllBrands();
   const brands = response?.data ?? []; // Extract the 'data' property
 
-  console.log("Fetched brands:", brands);
 
   return (
     <div className="mb-10 lg:mb-20 bg-shop_lighter_bg p-5 lg:p-7">

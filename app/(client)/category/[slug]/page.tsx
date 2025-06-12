@@ -35,19 +35,22 @@
 
 // export default CategoryPage;
 
-import CategoryProducts from "@/components/CategoryProducts";
-import Container from "@/components/Container";
-import { Title } from "@/components/text";
+// ✅ DO NOT use custom type PageProps
+// ✅ Let Next.js infer the route params automatically
+
+
+// app/(client)/category/[slug]/page.tsx
+
 import { getCategories } from "@/sanity/lib/queries";
-import React from "react";
+import Container from "@/components/Container";
+import CategoryProducts from "@/components/CategoryProducts";
+import { Title } from "@/components/text";
 
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-const CategoryPage = async ({ params }: PageProps) => {
+const CategoryPage = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
   const categories = await getCategories();
   const { slug } = params;
 
@@ -69,6 +72,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 };
 
 export default CategoryPage;
+
 
 
 
